@@ -1,0 +1,20 @@
+Procedure dot_product( INTEGER v1[] ,INTEGER v2 [] , var ps: INTEGER);
+Begin
+    ps := 0; // Initialize the dot product to zero
+    For i from 1 to Length(v1) Do
+        ps := ps + v1[i] * v2[i]; // Calculate the dot product
+End;
+
+Algorithm DetermineOrthogonality( INTEGER vectors[]): boolean;
+Var
+    i, j: INTEGER;
+    dot_result: INTEGER ;
+Begin
+    For i from 1 to Length(vectors) - 1 Do
+        For j from i + 1 to Length(vectors) Do
+            dot_product(vectors[i], vectors[j], dot_result); // Calculate dot product
+            If dot_result <> 0 Then
+                Return False; // Not orthogonal if dot product is not zero
+    End For;
+    Return True; // All pairs are orthogonal
+End;
